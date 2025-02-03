@@ -1,0 +1,19 @@
+.shop-logo {
+    width: 150px;
+}
+
+.shop-header {
+    text-transform: uppercase;
+}
+
+.shop-main-menu li {
+    display: flex;
+    justify-content: space-around;
+    margin-right: 15px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.shop-main-menu a {
+    color: #1e1e1e;
+}

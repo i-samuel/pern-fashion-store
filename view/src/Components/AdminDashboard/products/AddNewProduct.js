@@ -27,11 +27,10 @@ export default function AddNewProduct() {
         quantity: 1
     })
 
-
+    //
     useEffect(() => {
         async function fetchData() {
-            const response = await fetchAttrCats();
-            
+            const response = await fetchAttrCats();            
             return response;
         }
         fetchData().then((res)=>{
@@ -62,19 +61,21 @@ export default function AddNewProduct() {
         
     }, [variants, attributes]);
 
-  
+  //
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setProduct((prevObj) => ({...prevObj, [name] : value}));
     };
  
+    //
     const handleFileChange = (e) => {
         const [file] = e.target.files;
         setProduct((prev) => ({...prev, image: file}));
     }
 
+    //
     const handleCatCheck = (e) => {
-        console.log(e.target.checked);
+        
         /*if(e.target.checked === true){
             setProductCats(prev => [...prev, e.target.value]);
         } else {
@@ -136,22 +137,23 @@ export default function AddNewProduct() {
         
     }
     
+    //
     //variant quantity count input handler
     const handleVarCountChange = (color, size, quantity) => {
         setVariants((prev) => ({...prev, 
             [color]: {...prev[color], [size]: quantity}}));
     }
-
+    
+    //
     //remove variant
     const removeVariant = (color, size) => {
         const newObj = variants;
-        console.log('old', newObj);
         delete newObj[color][size];
-        console.log('new', newObj);
         setVariants(newObj);
         setVarList(variantList(variants));
     }
 
+    //
     const variantList = (obj) => {
         let arr = [];
         for(let colorId in obj) {
@@ -169,6 +171,7 @@ export default function AddNewProduct() {
         return arr;
     }
 
+    //
     const attrList = (obj) => {
         let arr = [];
         for(const item in obj) {
@@ -176,12 +179,12 @@ export default function AddNewProduct() {
         }
         return arr;
     }
-    
+    //
     const handleNewVariant = (key, value) => {
         setNewVariant(prev => ({...prev, [key]: value}));
     }
     console.log(newVariant);
-
+    //
     const submitNewVariant = () => {
         if(newVariant['color'] && newVariant['size'] && newVariant['quantity'] > 0){
             setVariants(prev => ({...prev, [newVariant['color']]: {
